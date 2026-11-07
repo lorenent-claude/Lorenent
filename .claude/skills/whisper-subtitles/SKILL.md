@@ -23,6 +23,12 @@ sh ./models/download-ggml-model.sh large-v3-turbo   # downloads models/ggml-larg
 # macOS alternative: brew install whisper-cpp
 ```
 
+Models come only from Hugging Face (`huggingface.co`, redirects to
+`cas-bridge.xethub.hf.co`). If the script prints `Failed to download ggml model`
+in a sandbox, check `curl -sI https://huggingface.co` - a proxy 403 means the
+network policy must allow those hosts (or the person copies a `ggml-*.bin` file in).
+`models/for-tests-ggml-*.bin` are empty stubs for CI: they run but transcribe nothing.
+
 Choosing a model (multilingual unless it ends with `.en`):
 
 | Model | Size | When |
